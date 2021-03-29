@@ -1,10 +1,26 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from database import Wilayah_Indonesia
 from pony.orm import db_session, raw_sql
 
 
 app = FastAPI()
 # implementing sub-id query
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "https://nurulbayan.or.id",
+    "https://www.nurulbayan.or.id"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @app.get("/indonesia")
 @db_session
