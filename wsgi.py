@@ -78,7 +78,27 @@ class Kecamatan():
             raise HTTPNotFound()
 
 
+class Kelurahan():
+    @db_session
+    def on_get(self, req, resp, prov, kab, kec, kel, **params):
+        kode = "__"
+        if not validCode(prov) or not validCode(kab) or not validCode(kec) or \
+                not validCode(kel, 4):
+            raise HTTPBadRequest()
+
+        kode = prov + '.' + kab + '.' + kec + '.' + kel
+        wil = Wilayah_Indonesia.select(lambda w: raw_sql('kode like "' + kode + '"'))
+        if len(wil) > 0:
+            resp.media = {
+                "jumlah": len(wil),
+                "data": [{"id": w.kode, "nama": w.nama, "tipe": "kelurahan"} for w in wil]
+            }
+        else:
+            raise HTTPNotFound()
+
+
 app.add_route('/indonesia', Indonesia())
 app.add_route('/indonesia/{prov}', Provinsi())
 app.add_route('/indonesia/{prov}/{kab}', Kabupaten())
 app.add_route('/indonesia/{prov}/{kab}/{kec}', Kecamatan())
+app.add_route('/indonesia/{prov}/{kab}/{kec}/{kel}', Kelurahan())
