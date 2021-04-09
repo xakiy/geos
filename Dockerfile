@@ -8,4 +8,4 @@ WORKDIR /app
 
 RUN pip install -U pip; pip install -r requirements.txt
 
-CMD ["gunicorn", "wsgi:app", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "wsgi:app", "--bind", "0.0.0.0:8080", "--workers", "2", "--log-file", "-"]
