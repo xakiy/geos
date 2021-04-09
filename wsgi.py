@@ -3,8 +3,11 @@ from database import Wilayah_Indonesia
 from pony.orm import db_session, raw_sql
 
 
-app = application = API()
 # implemented in Falcon Framework
+app = application = API()
+
+# strip any trailing slash in request params
+app.req_options.strip_url_path_trailing_slash = True
 
 
 def validCode(kode, length=2):
