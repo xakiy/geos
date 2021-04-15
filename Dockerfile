@@ -1,5 +1,7 @@
 FROM tiangolo/uvicorn-gunicorn:python3.7-alpine3.8
 
+MAINTAINER Ahamd Ghulam Zakiy <ghulam.zakiy@gmail.com>
+
 RUN apk update; apk add --no-cache sqlite
 
 COPY . /app

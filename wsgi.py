@@ -1,5 +1,5 @@
 from falcon import API, HTTPBadRequest, HTTPNotFound
-from database import Wilayah_Indonesia
+from database import Wilayah_2020 as Wilayah_Indonesia
 from pony.orm import db_session, raw_sql
 
 
@@ -22,7 +22,7 @@ class Indonesia():
         if len(wil) > 0:
             resp.media = {
                 "jumlah": len(wil),
-                "data": [{"id": w.kode, "nama": w.nama, "tipe": "provinsi"} for w in wil]
+                "data": [{"id": w.kode, "nama": w.nama.title(), "tipe": "provinsi"} for w in wil]
             }
         else:
             raise HTTPNotFound()
@@ -39,7 +39,7 @@ class Provinsi():
         if len(wil) > 0:
             resp.media = {
                 "jumlah": len(wil),
-                "data": [{"id": w.kode, "nama": w.nama, "tipe": "kabupaten"} for w in wil]
+                "data": [{"id": w.kode, "nama": w.nama.title(), "tipe": "kabupaten"} for w in wil]
             }
         else:
             raise HTTPNotFound()
@@ -57,7 +57,7 @@ class Kabupaten():
         if len(wil) > 0:
             resp.media = {
                 "jumlah": len(wil),
-                "data": [{"id": w.kode, "nama": w.nama, "tipe": "kecamatan"} for w in wil]
+                "data": [{"id": w.kode, "nama": w.nama.title(), "tipe": "kecamatan"} for w in wil]
             }
         else:
             raise HTTPNotFound()
@@ -75,7 +75,7 @@ class Kecamatan():
         if len(wil) > 0:
             resp.media = {
                 "jumlah": len(wil),
-                "data": [{"id": w.kode, "nama": w.nama, "tipe": "kelurahan"} for w in wil]
+                "data": [{"id": w.kode, "nama": w.nama.title(), "tipe": "kelurahan"} for w in wil]
             }
         else:
             raise HTTPNotFound()
@@ -94,7 +94,7 @@ class Kelurahan():
         if len(wil) > 0:
             resp.media = {
                 "jumlah": len(wil),
-                "data": [{"id": w.kode, "nama": w.nama, "tipe": "kelurahan"} for w in wil]
+                "data": [{"id": w.kode, "nama": w.nama.title(), "tipe": "kelurahan"} for w in wil]
             }
         else:
             raise HTTPNotFound()
