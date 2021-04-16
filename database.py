@@ -5,7 +5,7 @@ from pathlib import Path
 db = Database()
 
 
-class Wilayah_Indonesia(db.Entity):
+class Wilayah_2020(db.Entity):
     kode = PrimaryKey(str)
     nama = Optional(str)
 
