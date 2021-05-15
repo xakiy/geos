@@ -28,5 +28,13 @@ The API endpoint is served in `http://localhost:8000/indonesia`
 subsequent regions is accessible as numeric sub-path, first sub-path for
 province, second for regencies, and the third for districts.
 
+### Rebuilding the Database
+To rebuild the `geo.db` based on newest version of the database source you can
+invoke command like `mysql2sqlite wilayah_2020.sql | sqlite3 geo.db` with 
+an assumption that you already have the required resources and tools installed,
+such as `mysql2sqlite` and `sqlite3`.
+
 ---
+### Resources
 Database source: https://github.com/cahyadsn/wilayah
+MySQL to SQLite3 converter: https://github.com/dumblob/mysql2sqlite
