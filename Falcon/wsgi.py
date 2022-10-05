@@ -1,9 +1,9 @@
-from falcon import API, HTTPBadRequest, HTTPNotFound
+from falcon import App, HTTPBadRequest, HTTPNotFound
 import regions
 
 
 # implemented in Falcon Framework
-app = application = API()
+app = application = App()
 
 # strip any trailing slash in request params
 app.req_options.strip_url_path_trailing_slash = True
