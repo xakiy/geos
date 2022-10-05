@@ -5,6 +5,8 @@ framework FastAPI dan Falcon.
 
 Cakupan wilayah yang ditampilkan sampai pada level kelurahan atau desa yang berupa kode gabungan/agregasi, yang setiap kode tingkatan wilayahnya dipisahkan oleh tanda titik.
 
+Database wilayah diambil dari proyek https://github.com/cahyadsn/wilayah besutan saudara [Cahya DSN](https://github.com/cahyadsn)
+
 ---
 ## Install
 
@@ -27,18 +29,20 @@ untuk Falcon gunakan gunicorn
 `$gunicorn wsgi:app --bind 0.0.0.0:8000 --log-file -`
 
 ### Endpoint API
-Perlu dikatahui bahwa kode suatu wilayah merupakan gabungan/agregasi dari kode wilayah daerah itu sendiri dengan wilayah induknya yang dipisahkan oleh tanda titik. Seperti kode kelurahan **31.75.02.100** yang bisa diurutkan sebagai **31** untuk **DKI Jakarta**, **75** untuk **Kota Adm. Jakarta Timur**, **02** mewakili kecamatan **Pulogadung** dan angka **100** untuk kelurahan **Rawamangun**.
+Kode suatu wilayah yang dihasilkan merupakan gabungan/agregasi dari kode wilayah daerah itu sendiri dengan wilayah induknya yang dipisahkan oleh tanda titik. Seperti kode kelurahan **31.75.02.100** yang bisa diurutkan sebagai **31** untuk **DKI Jakarta**, **75** untuk **Kota Adm. Jakarta Timur**, **02** mewakili kecamatan **Pulogadung** dan angka **100** untuk kelurahan **Rawamangun**.
 
 Endpoint utama yaitu `http://localhost:8000/indonesia`
-akan menampilkan data seluruh propinsi di Indonesia, untuk melihat kabupaten bisa dengan mencantumkan kode propinsi kabupaten tersebut setelahnya dengan dipisah `/`, misal
+akan menampilkan data seluruh propinsi di Indonesia, untuk melihat kabupaten bisa dengan mencantumkan kode propinsi kabupaten tersebut setelahnya yang dipisah `/`, misal
 `http://localhost:8000/indonesia/11` akan menampikan semua kabupaten di provinsi **Aceh**, begitu juga selanjutnya untuk menampilkan kecamatan dan kelurahan di bawahnya.
 
 ### Memperbarui Data
-Untuk membuat ulang `geo.db` berdasarkan data sql terbaru Anda bisa menjalankan script `rebuid-db.sh` yang sudah disediakan.
+Untuk membuat ulang `geo.db` berdasarkan data sql ~~terbaru~~ Anda bisa menjalankan script `$python rebuid-db.py` yang sudah disediakan.
+
+**Note**: Karena ada perubahan gaya dump SQL antara yang lama dan yang terbaru, yakni dihilangkannya `backtick` yang mengapit kolom/field di database, `mysql2sqlite` selalu gagal memparse dump data yang terbaru, jadi untuk sementara masih menggunakan database `wilayah_2020.sql`.
 
 ---
 ### Referensi
-Database Wilayah: https://github.com/cahyadsn/wilayah
-MySQL to SQLite3 converter: https://github.com/dumblob/mysql2sqlite
-Falcon Framework: https://github.com/falconry/falcon
-FastAPI Framework: https://github.com/tiangolo/fastapi/
+Database Wilayah: https://github.com/cahyadsn/wilayah \
+MySQL to SQLite3 converter: https://github.com/dumblob/mysql2sqlite \
+Falcon Framework: https://github.com/falconry/falcon \
+FastAPI Framework: https://github.com/tiangolo/fastapi
