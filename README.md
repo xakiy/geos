@@ -36,9 +36,13 @@ akan menampilkan data seluruh propinsi di Indonesia, untuk melihat kabupaten bis
 `http://localhost:8000/indonesia/11` akan menampikan semua kabupaten di provinsi **Aceh**, begitu juga selanjutnya untuk menampilkan kecamatan dan kelurahan di bawahnya.
 
 ### Memperbarui Data
-Untuk membuat ulang `geo.db` berdasarkan data sql ~~terbaru~~ Anda bisa menjalankan script `$python rebuid-db.py` yang sudah disediakan.
+Untuk membuat ulang `geo.db` berdasarkan data sql terbaru Anda bisa menjalankan script `$python rebuid-db.py` yang sudah disediakan.
 
-**Note**: Karena ada perubahan gaya dump SQL antara yang lama dan yang terbaru, yakni dihilangkannya `backtick` yang mengapit kolom/field di database, `mysql2sqlite` selalu gagal memparse dump data yang terbaru, jadi untuk sementara masih menggunakan database `wilayah_2020.sql`.
+**Note**:
+Sejak update database wilayah_2022.sql, format dump SQL yang dipakai telah diubah tidak
+lagi spesifik MySQL format dump tetapi sudah menjadi format universal SQL dump.
+Oleh karena itu, SQLite sudah bisa langsung menggunakan format dump tersebut dan
+tidak membutuhkan konverter mysql2sqlite lagi.
 
 ---
 ### Referensi
