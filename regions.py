@@ -1,4 +1,4 @@
-from database import Wilayah_2020 as Wilayah_Indonesia
+from database import Wilayah as Wilayah_Indonesia
 from pony.orm import db_session, raw_sql
 
 

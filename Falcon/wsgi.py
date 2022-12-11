@@ -19,7 +19,7 @@ class Indonesia():
 
 
 class Provinsi():
-    def on_get(self, req, resp, prov, **params):
+    def on_get(self, req, resp, prov):
         try:
             data = regions.Indonesia.get_regencies(prov)
             if data:
@@ -31,7 +31,7 @@ class Provinsi():
 
 
 class Kabupaten():
-    def on_get(self, req, resp, prov, kab, **params):
+    def on_get(self, req, resp, prov, kab):
         try:
             data = regions.Indonesia.get_districts(prov, kab)
             if data:
@@ -43,7 +43,7 @@ class Kabupaten():
 
 
 class Kecamatan():
-    def on_get(self, req, resp, prov, kab, kec, **params):
+    def on_get(self, req, resp, prov, kab, kec):
         try:
             data = regions.Indonesia.get_localities(prov, kab, kec)
             if data:
@@ -55,7 +55,7 @@ class Kecamatan():
 
 
 class Kelurahan():
-    def on_get(self, req, resp, prov, kab, kec, kel, **params):
+    def on_get(self, req, resp, prov, kab, kec, kel):
         try:
             data = regions.Indonesia.get_town(prov, kab, kec, kel)
             if data:
