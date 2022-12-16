@@ -11,27 +11,29 @@ saudara [Cahya DSN](https://github.com/cahyadsn)
 
 ## Install
 
-Klon reponya dengan perintah `$git clone https://github.com/xakiy/geos`.
+Klon reponya dengan `$git clone https://github.com/xakiy/geos`.  
 Anda bisa menjalankannya sebagai server lokal atau membuat docker image dari
 masing-masing server.
 
 ### Membuat Docker Image
 Anda bisa membuat container image dengan docker atau yang lebih ringan podman
-dengan perintah:
-untuk Falcon `$docker build -t geos-falcon -f Falcon/Dockerfile .`
-untuk FastAPI `$docker build -t geos-fastapi -f FastAPI/Dockerfile .`
-lalu jalankan containernya dengan perintah:
+dengan perintah:  
+untuk Falcon  
+`$docker build -t geos-falcon -f Falcon/Dockerfile .`  
+untuk FastAPI  
+`$docker build -t geos-fastapi -f FastAPI/Dockerfile .`  
+lalu jalankan containernya dengan perintah:  
 `$docker run -d -p 8000:8000 geos`
 
 
 ### Membuat Server Lokal
-Siapkan virtualenv dan buat database `geo.db` dengan perintah
-`$python3 rebuild-db.py`
-Jalankan servernya, untuk FastAPI:
-`pip install -r FastAPI/requirements.txt`
-`$gunicorn FastAPI.asgi:app -c FastAPI/gunicorn.conf.py`
-untuk Falcon:
-`pip install -r Falcon/requirements.txt`
+Siapkan virtualenv dan buat database `geo.db` dengan perintah  
+`$python3 rebuild-db.py`  
+Jalankan servernya, untuk FastAPI:  
+`pip install -r FastAPI/requirements.txt`  
+`$gunicorn FastAPI.asgi:app -c FastAPI/gunicorn.conf.py`  
+untuk Falcon:  
+`pip install -r Falcon/requirements.txt`  
 `$gunicorn Falcon.wsgi:app -c Falcon/gunicorn.conf.py`
 
 ### Endpoint API
@@ -60,7 +62,7 @@ tidak membutuhkan konverter mysql2sqlite lagi.
 
 ---
 ### Referensi
-Database Wilayah: https://github.com/cahyadsn/wilayah
-MySQL to SQLite3 converter: https://github.com/dumblob/mysql2sqlite
-Falcon Framework: https://github.com/falconry/falcon
-FastAPI Framework: https://github.com/tiangolo/fastapi
+Database Wilayah: https://github.com/cahyadsn/wilayah  
+MySQL to SQLite3 converter: https://github.com/dumblob/mysql2sqlite  
+Falcon Framework: https://github.com/falconry/falcon  
+FastAPI Framework: https://github.com/tiangolo/fastapi  
