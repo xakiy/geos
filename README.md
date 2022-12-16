@@ -1,7 +1,6 @@
 # GEOS
 
-Server API wilayah Indonesia menggunakan
-framework FastAPI dan Falcon.
+Server REST API wilayah Indonesia menggunakan framework FastAPI dan Falcon.
 
 Cakupan wilayah yang ditampilkan sampai pada level kelurahan atau desa yang berupa kode gabungan/agregasi, yang setiap kode tingkatan wilayahnya dipisahkan oleh tanda titik.
 
@@ -14,10 +13,11 @@ Klon reponya dengan perintah `$git clone https://github.com/xakiy/geos`.
 Anda bisa menjalankannya sebagai server lokal atau membuat docker image dari masing-masing server.
 
 ### Membuat Docker Image
-Anda bisa membuat docker image dengan docker atau (yang lebih ringan) podman
-dengan perintah
-`$docker build -t geos .`
-lalu jalankan containernya dengan perintah
+Anda bisa membuat container image dengan docker atau yang lebih ringan podman
+dengan perintah:
+untuk Falcon `$docker build -t geos -f Falcon/Dockerfile .`
+untuk FastAPI `$docker build -t geos -f FastAPI/Dockerfile .`
+lalu jalankan containernya dengan perintah:
 `$docker run -d -p 8000:8000 geos`
 
 

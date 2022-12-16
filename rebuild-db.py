@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from urllib.request import urlretrieve
 import os
 import time
@@ -50,7 +51,7 @@ else:
     ready = False
 
 print(' - {}\t\t '.format(os.path.basename(sqlite)), end='')
-if os.path.isfile(subprocess.getoutput('which '+sqlite)):
+if os.path.isfile(subprocess.getoutput('which ' + sqlite)):
     print('ada')
 else:
     print('tidak')
@@ -76,18 +77,5 @@ else:
         print('berhasil!')
     else:
         print('gagal!')
-
-# Fungsi untuk menambahkan backtick di dump SQL
-def quote_field(input_file, output_file):
-    i = open(input_file, 'r')
-    o = open(output_file,'w')
-    line = i.readline()
-    while line:
-        line = re.sub(" wilayah",' "wilayah"', line)
-        line = re.sub(" kode ",' "kode" ', line)
-        line = re.sub(" nama ",' "nama" ', line)
-        line = re.sub("kode, nama", '"kode", "nama"', line)
-        o.write(line)
-        line = i.readline()
-    i.close()
-    o.close()
+finally:
+    os.remove(input_db)
