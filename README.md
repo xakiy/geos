@@ -9,7 +9,6 @@ oleh tanda titik.
 Database wilayah diambil dari proyek https://github.com/cahyadsn/wilayah besutan
 saudara [Cahya DSN](https://github.com/cahyadsn)
 
----
 ## Install
 
 Klon reponya dengan perintah `$git clone https://github.com/xakiy/geos`.
